@@ -349,7 +349,7 @@ if ("{query}".indexOf('yt_') &gt; -1){
 				<key>runningsubtext</key>
 				<string>Please wait</string>
 				<key>script</key>
-				<string>python start.py {query}</string>
+				<string>python start.py --open-issue {query}</string>
 				<key>subtext</key>
 				<string>please wait</string>
 				<key>title</key>
@@ -380,7 +380,7 @@ if ("{query}".indexOf('yt_') &gt; -1){
 				<key>sticky</key>
 				<false/>
 				<key>title</key>
-				<string>Wohoo! Issue was created!</string>
+				<string>Issue was created</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.output.notification</string>
@@ -399,61 +399,6 @@ if ("{query}".indexOf('yt_') &gt; -1){
 			<string>alfred.workflow.trigger.external</string>
 			<key>uid</key>
 			<string>9469E909-3D44-4B2C-8FAA-B0B9B8542875</string>
-			<key>version</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>lastpathcomponent</key>
-				<false/>
-				<key>onlyshowifquerypopulated</key>
-				<false/>
-				<key>output</key>
-				<integer>0</integer>
-				<key>removeextension</key>
-				<false/>
-				<key>sticky</key>
-				<false/>
-				<key>title</key>
-				<string>Youtrack preference saved!</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.notification</string>
-			<key>uid</key>
-			<string>981E39E5-14DD-441E-85FF-51C33ED91793</string>
-			<key>version</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>python start.py --set {query}</string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>D69C93CA-188A-453D-AD06-3627485CA6FD</string>
-			<key>version</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>triggerid</key>
-				<string>yt_password</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.trigger.external</string>
-			<key>uid</key>
-			<string>5CC6D8DA-62E2-49CC-AC67-C835103531AB</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
@@ -491,6 +436,61 @@ if ("{query}".indexOf('yt_') &gt; -1){
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
 			<string>C18192C8-426C-470C-AC45-7CAECD53CB8C</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>python start.py --set {query}</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>D69C93CA-188A-453D-AD06-3627485CA6FD</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>output</key>
+				<integer>0</integer>
+				<key>removeextension</key>
+				<false/>
+				<key>sticky</key>
+				<false/>
+				<key>title</key>
+				<string>Youtrack preference saved!</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>981E39E5-14DD-441E-85FF-51C33ED91793</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>triggerid</key>
+				<string>yt_password</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.external</string>
+			<key>uid</key>
+			<string>5CC6D8DA-62E2-49CC-AC67-C835103531AB</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>

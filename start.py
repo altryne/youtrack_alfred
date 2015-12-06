@@ -109,6 +109,7 @@ if __name__ == u"__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--default-project', dest='default_project', nargs='?', default=None)
     parser.add_argument('--create-issue', dest='issue', nargs='?', default=None)
+    parser.add_argument('--open-issue', dest='open_issue', nargs='?', default=None)
     parser.add_argument('--set', dest='set', nargs='?', default=None)
     parser.add_argument('--reset', dest='reset', nargs='?', default=None)
     parser.add_argument('query', nargs='?', default=None)
@@ -168,20 +169,22 @@ if __name__ == u"__main__":
     elif wf.pargs.default_project:
         ## Set default project with --default-project
         res = wf.run(set_default_project)
-    else:
-        if wf.pargs.query:
-            params = split_query_to_params(wf.pargs.query)
-        else:
-            params = ()
-
-        wf.params = params
-        ## u'\u25b6\ufe0e\ufe0e' represents the ▶︎︎ character which I use to split params in alfred.
-        ## if there's more then 1 item after the split it means there are several params
-
-        if len(params) == 2:
+    elif wf.pargs.open_issue:
+        wf.params = split_query_to_params(wf.pargs.open_issue)
+        log.error(wf.pargs)
+        if len(wf.params) == 2:
             res = wf.run(filter_issue_types)
-        elif len(params) == 3:
+        elif len(wf.params) == 3:
             res = wf.run(add_ticket_title)
         else:
-            res = wf.run(main)
+            wf.add_item(u'Please type YT to run the workflow again.', subtitle=u'Or ask alex why he can\'t make it work like this')
+            res = wf.send_feedback()
+    else:
+        ## u'\u25b6' represents the ▶︎︎ character which I use to split params in alfred.
+        ## if there's more then 1 item after the split it means there are several params
+        if wf.pargs.query:
+            wf.params = split_query_to_params(wf.pargs.query)
+        else:
+            wf.params = ()
+        res = wf.run(main)
     sys.exit(res)
