@@ -73,12 +73,13 @@ def filter_issue_types(wf):
     wf.send_feedback()
 
 def add_ticket_title(wf):
+    log.error(wf.args)
     if wf.params[2] == '':
         wf.add_item('Enter issue title please', icon='')
     else:
         wf.add_item('Submit issue',
                     subtitle='"%s"' % wf.params[2],
-                    arg=wf.args[0],
+                    arg=wf.args[1],
                     valid=True)
     wf.send_feedback()
 
@@ -99,11 +100,13 @@ def create_issue(wf, **kwargs):
             print url
     except Exception as e:
         print e.message
+    sys.exit()
 
 if __name__ == u"__main__":
     # Initiate the workflow object
     wf = Workflow()
     log = wf.logger
+    log.error('Workflow ran with the following parameters : %s' % wf.args)
 
     #Parse some arguments so we better understand what the user is here to do
     parser = argparse.ArgumentParser()
@@ -165,6 +168,7 @@ if __name__ == u"__main__":
 
     if wf.pargs.issue:
         ## Create issue with --create-issue
+        log.error('Create issue was ran with the following parameters: %s' % wf.args)
         res = wf.run(create_issue)
     elif wf.pargs.default_project:
         ## Set default project with --default-project
@@ -178,7 +182,7 @@ if __name__ == u"__main__":
             res = wf.run(add_ticket_title)
         else:
             wf.add_item(u'Please type YT to run the workflow again.', subtitle=u'Or ask alex why he can\'t make it work like this')
-            res = wf.send_feedback()
+            wf.send_feedback()
     else:
         ## u'\u25b6' represents the ▶︎︎ character which I use to split params in alfred.
         ## if there's more then 1 item after the split it means there are several params
